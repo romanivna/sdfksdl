@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        /* ---- button ---- */
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+        * {
+            margin: 10px;
+            font-weight: bold;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .button-group:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .grid {
+            border: 1px solid #333;
+        }
+
+        /* clear fix */
+        .grid:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        p{
+            margin-top:20%;
+        }
+
+        .grid_item{
+            position: relative;
+            float:left;
+        }
+
+        .small{
+            width:50px;
+        }
+        .middle{
+            width:100px;
+        }
+
+
+        .big {
+            width: 200px;
+        }
+        .red {
+            background: red;
+        }
+        .green{
+            background: green;
+        }
+        .yellow{
+            background: yellow;
+        }
+        .blue{
+            background: blue;
+        }
+
+
+        .circle, .ellipse{
+            border-radius: calc(50%)
+        }
+
+
+        .square.small, .circle.small{
+            height: 50px;
+        }
+        .square.middle, .circle.middle{
+            height: 100px;
+        }
+        .square.big, .circle.big{
+            height: 200px;
+        }
+
+
+        .rectangle.small{
+            height: 100px;
+        }
+        .rectangle.middle{
+            height: 150px;
+        }
+        .rectangle.big{
+            height: 200px;
+        }
+
+
+        .ellipse.small{
+            height:30px;
+        }
+        .ellipse.middle{
+            height:50px;
+        }
+        .ellipse.big{
+            height:80px;
+        }
+
+    </style>
+    <title>Isotope</title>
+</head>
+<body>
+<h1>Task #2.1</h1>
+<div class="filters">
+<div class="ui-group">
+    <h3>Shape</h3>
+    <div class="button-group filters-button-group" data-filter-group="shape">
+        <button class="btn btn-warning" data-filter="">any</button>
+        <button class="btn btn-info" data-filter=".square">square</button>
+        <button class="btn btn-info" data-filter=".circle">circle</button>
+        <button class="btn btn-info" data-filter=".ellipse">ellipse</button>
+        <button class="btn btn-info" data-filter=".rectangle">rectangle</button>
+    </div>
+</div>
+    <div class="ui-group">
+    <h3>Color</h3>
+    <div class="button-group filters-button-group" data-filter-group="color">
+        <button class="btn btn-warning" data-filter="">any</button>
+        <button class="btn btn-info" data-filter=".red">red</button>
+        <button class="btn btn-info" data-filter=".green">green</button>
+        <button class="btn btn-info" data-filter=".blue">blue</button>
+        <button class="btn btn-info" data-filter=".yellow">yellow</button>
+    </div>
+</div>
+    <div class="ui-group">
+    <h3>Size</h3>
+    <div class="button-group filters-button-group" data-filter-group="size">
+        <button class="btn btn-warning" data-filter="">any</button>
+        <button class="btn btn-info" data-filter=".small">small</button>
+        <button class="btn btn-info" data-filter=".big">big</button>
+        <button class="btn btn-info" data-filter=".middle">middle</button>
+    </div>
+</div>
+</div>
+
+
+<div class="grid">
+    <div class="grid_item square small red"></div>
+    <div class="grid_item circle big green"></div>
+    <div class="grid_item ellipse middle blue"></div>
+    <div class="grid_item circle middle yellow"></div>
+    <div class="grid_item rectangle green"></div>
+    <div class="grid_item circle big red"></div>
+    <div class="grid_item ellipse middle yellow"></div>
+    <div class="grid_item square big blue"></div>
+    <div class="grid_item ellipse small yellow"></div>
+    <div class="grid_item rectangle middle blue"></div>
+    <div class="grid_item square middle red"></div>
+    <div class="grid_item circle small yellow"></div>
+    <div class="grid_item circle middle blue"></div>
+    <div class="grid_item rectangle small yellow"></div>
+    <div class="grid_item ellipse big green"></div>
+    <div class="grid_item circle small green">></div>
+    <div class="grid_item ellipse middle red"></div>
+    <div class="grid_item rectangle middle green"></div>
+    <div class="grid_item square small yellow"></div>
+    <div class="grid_item circle middle red"></div>
+    <div class="grid_item square middle yellow"></div>
+    <div class="grid_item circle small blue"></div>
+    <div class="grid_item rectangle big red"></div>
+    <div class="grid_item square big green"></div>
+    <div class="grid_item ellipse small green"></div>
+    <div class="grid_item square big blue"></div>
+    <div class="grid_item circle small yellow"></div>
+    <div class="grid_item rectangle small red"></div>
+    <div class="grid_item circle big yellow"></div>
+    <div class="grid_item ellipse middle green"></div>
+    <div class="grid_item ellipse bigred yellow"></div>
+    <div class="grid_item circle small blue"></div>
+    <div class="grid_item rectangle small red"></div>
+    <div class="grid_item square middle yellow"></div>
+    <div class="grid_item ellipse big green"></div>
+    <div class="grid_item circle middle yellow"></div>
+    <div class="grid_item square small red"></div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script>
+
+
+    // init Isotope
+    const $grid = $('.grid').isotope({
+        itemSelector: '.grid_item',
+        layoutMode: 'fitRows'
+    });
+
+    // store filter for each group
+    var filters = {};
+    $('.filters').on( 'click', '.btn', function() {
+
+        var $this = $(this);
+        // get group key
+        var $buttonGroup = $this.parents('.button-group');
+        console.log($buttonGroup);
+        var filterGroup = $buttonGroup.attr('data-filter-group');
+        // set filter for group
+        filters[ filterGroup ] = $this.attr('data-filter');
+
+        // combine filters
+        var filterValue = concatValues( filters );
+        // set filter for Isotope
+        $grid.isotope({ filter: filterValue });
+    });
+
+    // change is-checked class on buttons
+    $('.button-group').each( function( i, buttonGroup ) {
+        var $buttonGroup = $( buttonGroup );
+        $buttonGroup.on( 'click', 'button', function() {
+            $buttonGroup.find('.btn-warning').removeClass('btn-warning');
+            $( this ).addClass('btn-warning');
+        });
+    });
+
+    // flatten object by concatting values
+    function concatValues( obj ) {
+        var value = '';
+        for ( let prop in obj ) {
+            value += obj[ prop ];
+        }
+        return value;
+    }
+    // filter functions
+    let filterFns = {
+        // show if number is greater than 50
+        numberGreaterThan50: function() {
+                var number = $(this).find('.number').text();
+                return parseInt(number, 10) > 50;
+        }
+    };
+    // bind filter button click
+    $('.filters-button-group').on( 'click', 'button', function() {
+        let filterValue = $( this ).attr('data-filter');
+        // use filterFn if matches value
+        filterValue = filterFns[ filterValue ] || filterValue;
+        $grid.isotope({ filter: filterValue });
+    });
+//    // change is-checked class on buttons
+//    $('.button-group').each( function( i, buttonGroup) {
+//
+//        let $buttonGroup = $( buttonGroup );
+//        $buttonGroup.on( 'click', 'button', function() {
+//            $buttonGroup.find('.btn-warning').removeClass('btn-warning');
+//            $( this ).addClass('btn-warning');
+//        });
+//    });
+</script>
+</body>
+</html>

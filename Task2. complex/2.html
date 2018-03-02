@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Skill points</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+        *{
+            --main-color: #15cc82;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body{
+            width:80%;
+            margin: auto;
+        }
+
+        .skills{
+            color: var(--main-color);
+        }
+
+        .skillbox{
+            width:100%;
+            border: 1px solid var(--main-color);
+        }
+
+        .form{
+            padding: 20px;
+            width:100%;
+        }
+
+        [type='text'].input {
+            margin: 5px;
+            width: 60%;
+        }
+
+        .control-label{
+            width:30%;
+            padding:5px;
+        }
+
+        .btn{
+            background: black;
+            color:white;
+        }
+
+        .skills_ouput{
+            padding:20px;
+        }
+
+        hr{
+            width:100%;
+            margin:auto;
+            background-color: #929292;
+        }
+
+        .vertical_lines{
+            margin-left:0;
+            height: 10px;
+            width: 1px;
+            position: relative;
+        }
+
+        .vertical_text{
+            display:inline-block;
+            width:1px;
+        }
+
+        .output_skill{
+            background: var(--main-color);
+            padding:5px 10px;
+            margin:15px 5px 10px;
+            color: white;
+            border-radius:10px;
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>Task #2.2</h1>
+<h1 class="skills">Skills</h1>
+<div class="skillbox">
+    <form class="form form-inline">
+        <label for="skill_name" class="control-label">Skill name:</label>
+        <input type="text" id="skill_name" placeholder="Enter skill name" class="form-control input" autocomplete="off" pattern="[a-zA-Z+\s]{2,100}">
+        <br>
+        <label for="skill_range" class="control-label">Skill range:</label>
+        <input type="text" id="skill_range" placeholder="Enter skill range" class="form-control input" autocomplete="off"  pattern="[0-9]{1,3}">
+        <br>
+        <input type="button" value="Add skill" class="btn">
+    </form>
+</div>
+<div class="skills_output">
+
+</div>
+<hr class='vertical_lines' style="left:0; bottom: -34px;">
+<hr class='vertical_lines' style="left:25%; bottom: -23px;">
+<hr class='vertical_lines' style="left:75%; bottom: -12px;">
+<hr class='vertical_lines' style="left:100%; bottom: -1px;">
+<hr  style="height: 1px;">
+<div >
+    <span class='vertical_lines vertical_text'>Beginner</span>
+    <span class='vertical_lines vertical_text' style="left:23%;">Proficient</span>
+    <span class='vertical_lines vertical_text' style="left:73%;">Expert</span>
+    <span class='vertical_lines vertical_text' style="left: 98%" >Master</span>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+
+
+$('.btn').click(function(){
+    const validating = validate();
+    if(validating){
+        const skill_name = $('#skill_name').val();
+        const skill_range = +$('#skill_range').val() + '%';
+        let a = `<div class="output_skill"> ${skill_name}</div>`;
+        $('.skills_output').append(`<div class="output_skill" style="width: ${skill_range}"> ${skill_name}</div>`)
+       $('p').remove();
+    }
+
+
+})
+
+    function validate(){
+        $('p').remove();
+        const validateName = validateNameArea();
+        const validateRange = validateSalaryArea();
+
+        const skill_name = $('#skill_name').val();
+        const skill_range = +$('#skill_range').val()
+
+        if($('#skill_name')[0].checkValidity() && validateName){
+            if($('#skill_name').val().split('').length > 100){
+                $('#skill_name').after('<p>Max size of characters - 100. Only latin</p>')
+            }
+        }
+        $('#skill_range')[0].checkValidity();
+        if (!skill_name_validity){
+            $('#skill_name').after('<p>Max size of characters - 100. Only latin</p>')
+        } else skill_name_validity = true;
+        if (!skill_range_validity){
+            $('#skill_range').after('<p>Max size - 100. Only numbers</p>')
+        } else if(skill_range_validity.val()>100){
+            $('#skill_range').after('<p>Max size - 100. Only numbers</p>')
+        } else skill_name = true;
+
+        let result = skill_name_validity && skill_range_validity;
+    }
+
+function validateNameArea(){
+    const nameArea = $('#skill_name').val();
+    let resultNameArea = true;
+    if (nameArea==undefined||nameArea==''){
+        $('#skill_name').after(`<p>Please, enter yout skill name</p>`);
+        return resultNameArea && false
+    } else {
+        $('#skill_name').after(``);
+        return true;
+    }
+
+
+}
+function validateRangeArea() {
+    const rangeArea = $('#skill_range').val();
+    let resultRangeyArea = true;
+    if (rangeArea==undefined||rangeArea==''){
+        $('#skill_range').after(`<p>Please, enter your skill range</p>`);
+        return resultRangeArea && false
+    } else return true;
+}
+</script>
+</body>
+</html>
