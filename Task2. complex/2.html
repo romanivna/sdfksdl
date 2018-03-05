@@ -48,8 +48,12 @@
             color:white;
         }
 
-        .skills_ouput{
-            padding:20px;
+        .btn:hover{
+            color: var(--main-color)
+        }
+
+        .btn:focus{
+            color:white;
         }
 
         hr{
@@ -122,57 +126,68 @@ $('.btn').click(function(){
         let a = `<div class="output_skill"> ${skill_name}</div>`;
         $('.skills_output').append(`<div class="output_skill" style="width: ${skill_range}"> ${skill_name}</div>`)
        $('p').remove();
+        $('[type="text"]').val('')
     }
 
 
 })
 
     function validate(){
-        $('p').remove();
+       $('p').remove();
         const validateName = validateNameArea();
-        const validateRange = validateSalaryArea();
+        const validateRange = validateRangeArea();
+        console.log(validateName, validateRange)
+        return validateName && validateRange;
 
-        const skill_name = $('#skill_name').val();
-        const skill_range = +$('#skill_range').val()
+        ;
+       }
+//        if (!skill_name_validity){
+//            $('#skill_name').after('<p>Max size of characters - 100. Only latin</p>')
+//        } else skill_name_validity = true;
+//        if (!skill_range_validity){
+//            $('#skill_range').after('<p>Max size - 100. Only numbers</p>')
+//        } else if(skill_range_validity.val()>100){
+//            $('#skill_range').after('<p>Max size - 100. Only numbers</p>')
+//        } else skill_name = true;
 
-        if($('#skill_name')[0].checkValidity() && validateName){
-            if($('#skill_name').val().split('').length > 100){
-                $('#skill_name').after('<p>Max size of characters - 100. Only latin</p>')
-            }
-        }
-        $('#skill_range')[0].checkValidity();
-        if (!skill_name_validity){
-            $('#skill_name').after('<p>Max size of characters - 100. Only latin</p>')
-        } else skill_name_validity = true;
-        if (!skill_range_validity){
-            $('#skill_range').after('<p>Max size - 100. Only numbers</p>')
-        } else if(skill_range_validity.val()>100){
-            $('#skill_range').after('<p>Max size - 100. Only numbers</p>')
-        } else skill_name = true;
 
-        let result = skill_name_validity && skill_range_validity;
-    }
+//    }
 
 function validateNameArea(){
     const nameArea = $('#skill_name').val();
-    let resultNameArea = true;
     if (nameArea==undefined||nameArea==''){
         $('#skill_name').after(`<p>Please, enter yout skill name</p>`);
-        return resultNameArea && false
-    } else {
-        $('#skill_name').after(``);
-        return true;
-    }
+    } else isEmptyNameArea = true;
 
+    if(!$('#skill_name')[0].checkValidity()){
+        if($('#skill_name').val().split('').length > 100){
+            $('#skill_name').after('<p>Max size of characters - 100.</p>')
+        } else {
+            console.log('2')
+            $('#skill_name').after('<p> Only latin</p>')
+        }
+
+    } else isCorrectNameArea = true;
+    return isEmptyNameArea && isCorrectNameArea;
 
 }
+
 function validateRangeArea() {
+    let isEmptyRangeArea = false;
+    let isCorrectRangeArea = false;
     const rangeArea = $('#skill_range').val();
-    let resultRangeyArea = true;
-    if (rangeArea==undefined||rangeArea==''){
+    if (rangeArea == undefined || rangeArea == '') {
         $('#skill_range').after(`<p>Please, enter your skill range</p>`);
-        return resultRangeArea && false
-    } else return true;
+    } else isEmptyRangeArea = true;
+
+    if (!$('#skill_range')[0].checkValidity()) {
+        if (isNaN($('#skill_range').val())) {
+            $('#skill_range').after('<p>Only numbers</p>')
+        }
+    } else if ($('#skill_range').val() > 100) {
+        $('#skill_range').after('<p>Max size - 100.</p>')
+    } else isCorrectRangeArea = true;
+return isEmptyRangeArea && isCorrectRangeArea
 }
 </script>
 </body>
