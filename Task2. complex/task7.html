@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Task 7</title>
+	<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyD8I6By5186Sl3K5epvSVmG6mcu_T7CaXY",
+			authDomain: "history-box.firebaseapp.com",
+			databaseURL: "https://history-box.firebaseio.com",
+			projectId: "history-box",
+			storageBucket: "",
+			messagingSenderId: "634655481336"
+		};
+		firebase.initializeApp(config);
+	</script>
+</head>
+
+<body>
+
+	<section id="main"></section>
+
+	<script>
+		const main = document.getElementById('main');
+
+		const myDatabase = firebase.database();
+		const ref = myDatabase.ref('education');
+
+		ref.once("value")
+			.then(function (snapshot) {
+				snapshot.forEach(function (childSnapshot) {
+					const childKey = childSnapshot.key;
+					const childData = childSnapshot.val();
+				});
+			});
+
+
+	</script>
+
+</body>
+
+</html>

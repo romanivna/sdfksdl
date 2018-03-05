@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sidebar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+        *{
+            margin:0;
+            padding:0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .burger{
+            width:50px;
+            height:50px;
+            color:white;
+            background: maroon;
+            border-radius: 10px;
+            padding:5px;
+            cursor: pointer;
+            margin:5px;
+            border: 2px solid maroon;
+        }
+
+        .burger:hover{
+            background: #954b4a;
+        }
+
+        .burger:hover hr{
+            background: #ffc0a4;
+        }
+
+        hr{
+            background: white;
+            height:5px;
+            width:70%;
+            margin:7px auto;
+        }
+
+        .sidebar{
+            position:fixed;
+            background: #954b4a;
+            height:100%;
+            width: 300px;
+            font-size:2em;
+            left:-300px;
+            transition-property: left;
+            transition-duration: 1s;
+        }
+
+        p{
+            padding: 10px;
+            color: white;
+            cursor:pointer;
+        }
+
+        p:hover{
+            background: maroon;
+            color: #ffc0a4;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Task #6</h1>
+<div class="burger">
+    <hr>
+    <hr>
+    <hr>
+</div>
+<div class="sidebar">
+    <p>Lorem ispum</p>
+    <p>Dolor sit amet</p>
+    <p>Consectetur</p>
+    <p>Adipisicing elit</p>
+    <p>Cupiditate</p>
+    <p>Laudantium</p>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+    let burgercheck = 0;
+$('.burger').click(function(){
+    if(burgercheck%2==0){
+        $('.sidebar').css({'left':0})
+    } else{
+         $('.sidebar').css({'left':'-300px'})
+            }
+
+    burgercheck++
+    });
+
+</script>
+</body>
+</html>

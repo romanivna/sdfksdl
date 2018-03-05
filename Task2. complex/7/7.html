@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <title>Firebase</title>
+</head>
+<body>
+<h1>Task #2.7</h1>
+
+
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCsPg_3p06Hg8SouOFjRFFeOTmmZkFf_-o",
+        authDomain: "fir-task2-7.firebaseapp.com",
+        databaseURL: "https://fir-task2-7.firebaseio.com",
+        projectId: "fir-task2-7",
+        storageBucket: "",
+        messagingSenderId: "329014273393"
+    };
+    firebase.initializeApp(config);
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+    var dataBase = new Firebase('https://fir-task2-7.firebaseio.com/web/data');
+    var usersRef = dataBase.child("users");
+    usersRef.set({
+        alanisawesome: {
+            date_of_birth: "June 23, 1912",
+            full_name: "Alan Turing"
+        },
+        gracehop: {
+            date_of_birth: "December 9, 1906",
+            full_name: "Grace Hopper"
+        }
+    });
+    console.log(dataBase)
+</script>
+</body>
+</html>
